@@ -42,7 +42,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             bookCapture.appendChild(bookName);
             bookCapture.appendChild(bookPrice);
             bookCapture.appendChild(bookDescription);
-            book.appendChild(addToBagButton);
+            bookCapture.appendChild(addToBagButton);
             book.appendChild(bookCapture);
             page.appendChild(book);
         }
