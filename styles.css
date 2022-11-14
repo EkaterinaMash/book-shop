@@ -1,0 +1,39 @@
+.book {    
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 20px 30px;
+    background-color: antiquewhite;
+}
+
+.book img {
+    width: 300px;
+    height: 400px;
+}
+
+.book-capture {
+    flex: 1;
+    margin: 10px 10px;
+    font: Helvetica, sans-serif;
+    font-size: 16px;
+    position: relative;
+    
+}
+
+.book-name {
+    font-weight: 600;
+    font-size: 150%;
+    margin: 20px 0 20px;
+}
+
+.book-description {
+    position: absolute;
+    bottom: 20px;
+    width: 100px;
+    height: 30px;
+    box-sizing: border-box;
+    background-color: beige;
+    border-radius: 5px;
+    border-color: brown;
+    color: brown;
+}
+

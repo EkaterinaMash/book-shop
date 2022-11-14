@@ -18,6 +18,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             let bookName = document.createElement('div');
             let bookPrice = document.createElement('div');
             let bookDescription = document.createElement('button');
+            let addToBagButton = document.createElement('button');
 
             book.classList.add('book');
             bookCapture.classList.add('book-capture');
@@ -25,11 +26,13 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             bookName.classList.add('book-name');
             bookPrice.classList.add('book-price');
             bookDescription.classList.add('book-description');
+            addToBagButton.classList.add('add-button');
 
             author.textContent = obj.author;
             bookName.textContent = obj.title;
-            bookPrice.textContent = obj.price;
+            bookPrice.textContent = 'Price: $' + obj.price;
             bookDescription.textContent = 'Show more';
+            addToBagButton.textContent = 'Add to bag';
             bookPic.setAttribute('src', obj.imageLink);
         
             let page = document.querySelector('main');
@@ -39,6 +42,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             bookCapture.appendChild(bookName);
             bookCapture.appendChild(bookPrice);
             bookCapture.appendChild(bookDescription);
+            book.appendChild(addToBagButton);
             book.appendChild(bookCapture);
             page.appendChild(book);
         }
