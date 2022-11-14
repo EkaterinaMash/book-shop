@@ -6,8 +6,8 @@
 }
 
 .book img {
-    width: 300px;
-    height: 400px;
+    width: 30vw;
+    height: 40vw;
 }
 
 .book-capture {
@@ -25,25 +25,29 @@
     margin: 20px 0 20px;
 }
 
-.book-description {
+.book-description, .add-button {
     position: absolute;
     bottom: 20px;
     width: 100px;
     height: 30px;
     box-sizing: border-box;
-    background-color: beige;
     border-radius: 5px;
+}
+
+.book-description {
+    background-color: beige;
     border-color: brown;
     color: brown;
 }
 
 .add-button {
-    position: absolute;
-    bottom: 20px;
-    left: 50px;
-    width: 100px;
-    height: 30px;
-    box-sizing: border-box;
-    border-radius: 5px;
+    right: 50px;
+    background-color: brown;
+    border-color: brown;
+    color: beige;
+}
+
+.popup {
+    display: none;
 }
 

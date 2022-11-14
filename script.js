@@ -8,6 +8,8 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             for (let i=0; i<data.length; i++) {
                 createBookElem(data[i]);
             }
+            bookDescription.onclick = showPopupBookInfo;
+            closeBtn.onclick = closePopup;
         });
 
         function createBookElem(obj) {
@@ -19,6 +21,10 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             let bookPrice = document.createElement('div');
             let bookDescription = document.createElement('button');
             let addToBagButton = document.createElement('button');
+            let popupBookInfo = document.createElement('div');
+            let closeBtn = document.createElement('button');
+           /* let greeting = document.createElement('div');
+            let bag = document.createElement('img'); */
 
             book.classList.add('book');
             bookCapture.classList.add('book-capture');
@@ -27,23 +33,44 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             bookPrice.classList.add('book-price');
             bookDescription.classList.add('book-description');
             addToBagButton.classList.add('add-button');
-
+            popupBookInfo.classList.add('popup');
+            closeBtn.classList.add('close');
+          /*  greeting.classList.add('greeting');
+            bag.classList.add('bag'); */
+            
             author.textContent = obj.author;
             bookName.textContent = obj.title;
             bookPrice.textContent = 'Price: $' + obj.price;
             bookDescription.textContent = 'Show more';
             addToBagButton.textContent = 'Add to bag';
             bookPic.setAttribute('src', obj.imageLink);
+            popupBookInfo.textContent = obj.description;
+            closeBtn.textContent = 'Close';
+           /* greeting.textContent = 'Welcome to the book shop!';
+            bag.setAttribute('src', './icons/bag-icon'); */
         
             let page = document.querySelector('main');
+            let header = document.querySelector('header');
             
+          /* header.appendChild(greeting);
+            header.appendChild(bag); */
             book.appendChild(bookPic);
             bookCapture.appendChild(author);
             bookCapture.appendChild(bookName);
             bookCapture.appendChild(bookPrice);
             bookCapture.appendChild(bookDescription);
             bookCapture.appendChild(addToBagButton);
+            popupBookInfo.appendChild(closeBtn);
+            bookCapture.appendChild(popupBookInfo);
             book.appendChild(bookCapture);
             page.appendChild(book);
+        }
+
+        function showPopupBookInfo() {
+            popupBookInfo.classList.add('show');
+        }
+
+        function closePopup() {
+            popupBookInfo.classList.remove('show');
         }
 
