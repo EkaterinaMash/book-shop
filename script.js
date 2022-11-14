@@ -7,9 +7,9 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             console.log(data);
             for (let i=0; i<data.length; i++) {
                 createBookElem(data[i]);
+                document.querySelector('.book-info-button').onclick = showPopupBookInfo;
+                document.querySelector('.close').onclick = closePopup;
             }
-            bookDescription.onclick = showPopupBookInfo;
-            closeBtn.onclick = closePopup;
         });
 
         function createBookElem(obj) {
@@ -31,7 +31,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             author.classList.add('author');
             bookName.classList.add('book-name');
             bookPrice.classList.add('book-price');
-            bookDescription.classList.add('book-description');
+            bookDescription.classList.add('book-info-button');
             addToBagButton.classList.add('add-button');
             popupBookInfo.classList.add('popup');
             closeBtn.classList.add('close');
@@ -67,10 +67,10 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
         }
 
         function showPopupBookInfo() {
-            popupBookInfo.classList.add('show');
+            document.querySelector('.popup').classList.add('show');
         }
 
         function closePopup() {
-            popupBookInfo.classList.remove('show');
+            document.querySelector('.popup').classList.remove('show');
         }
 

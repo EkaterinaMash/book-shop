@@ -25,7 +25,7 @@
     margin: 20px 0 20px;
 }
 
-.book-description, .add-button {
+.book-info-button, .add-button {
     position: absolute;
     bottom: 20px;
     width: 100px;
@@ -34,7 +34,7 @@
     border-radius: 5px;
 }
 
-.book-description {
+.book-info-button {
     background-color: beige;
     border-color: brown;
     color: brown;
@@ -49,5 +49,9 @@
 
 .popup {
     display: none;
+}
+
+.popup .show {
+    display: block;
 }
 
