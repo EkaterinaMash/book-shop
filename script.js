@@ -5,6 +5,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
         })
         .then( data => {
             console.log(data);
+            createPageElem();
             for (let i=0; i<data.length; i++) {
                 createBookElem(data[i]);
             }
