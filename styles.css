@@ -60,5 +60,18 @@
     width: 60%;
     background-color: burlywood;
     margin: 10px 0 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: bisque;
+}
+
+.close {
+    width: 50px;
+    height: 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: brown;
+    border-color: brown;
+    background-color: aliceblue;
 }
 
