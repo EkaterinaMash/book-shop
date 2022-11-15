@@ -20,7 +20,8 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             let bookPrice = document.createElement('div');
             let bookDescription = document.createElement('button');
             let addToBagButton = document.createElement('button');
-            let popupBookInfo = document.createElement('div');
+            let popup = document.createElement('div');
+            let popupBookInfo = document.createElement('p');
             let closeBtn = document.createElement('button');
            /* let greeting = document.createElement('div');
             let bag = document.createElement('img'); */
@@ -32,7 +33,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             bookPrice.classList.add('book-price');
             bookDescription.classList.add('book-info-button');
             addToBagButton.classList.add('add-button');
-            popupBookInfo.classList.add('popup');
+            popup.classList.add('popup');
             closeBtn.classList.add('close');
           /*  greeting.classList.add('greeting');
             bag.classList.add('bag'); */
@@ -59,8 +60,9 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             bookCapture.appendChild(bookPrice);
             bookCapture.appendChild(bookDescription);
             bookCapture.appendChild(addToBagButton);
-            popupBookInfo.appendChild(closeBtn);
-            bookCapture.appendChild(popupBookInfo);
+            popup.appendChild(popupBookInfo);
+            popup.appendChild(closeBtn);
+            bookCapture.appendChild(popup);
             book.appendChild(bookCapture);
             page.appendChild(book);
         }
