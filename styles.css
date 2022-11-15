@@ -51,7 +51,10 @@
     display: none;
 }
 
-.popup .show {
+.popup.show {
     display: block;
+    width: 60%;
+    background-color: burlywood;
+    margin: 10px 0 10px;
 }
 
