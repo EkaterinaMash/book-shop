@@ -71,10 +71,12 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             let popups = document.querySelectorAll('.popup');
             for (let i=0; i<infoButtons.length; i++) {
                 infoButtons[i].onclick = function() {
-                    popups[i].classList.add('show')
+                    popups[i].classList.add('show');
+                    infoButtons[i].classList.add('hide');
                 };
                 closeButtons[i].onclick = function() {
                     popups[i].classList.remove('show');
+                    infoButtons[i].classList.remove('hide');
                 }
             }
         }

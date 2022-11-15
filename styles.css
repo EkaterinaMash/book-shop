@@ -40,6 +40,10 @@
     color: brown;
 }
 
+.book-info-button.hide {
+    display: none;
+}
+
 .add-button {
     right: 50px;
     background-color: brown;
