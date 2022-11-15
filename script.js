@@ -11,12 +11,33 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             showClosePopup();
         });
 
-        function createBookElem(obj) {
+        function createPageElem() {
+            let header = document.querySelector('header');
+            let page = document.querySelector('main');
+
             let greeting = document.createElement('div');
             let bagSection = document.createElement('section');
             let bagImg = document.createElement('div');
             let bag = document.createElement('div');
             let booksSection = document.createElement('section');
+
+            greeting.classList.add('greeting');
+            bagSection.classList.add('bag-section');
+            bagImg.classList.add('bag-img');
+            bag.classList.add('bag');
+            booksSection.classList.add('books-section');
+
+            greeting.textContent = 'Welcome to the book shop!';
+ 
+            header.appendChild(greeting);
+            bagSection.appendChild(bag);
+            bagSection.appendChild(bagImg);
+            page.appendChild(bagSection);
+            page.appendChild(booksSection);
+        }
+
+        function createBookElem(obj) {
+            
             let book = document.createElement('div');
             let bookPic = document.createElement('img');
             let bookCapture = document.createElement('div');
@@ -28,12 +49,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             let popup = document.createElement('div');
             let popupBookInfo = document.createElement('p');
             let closeBtn = document.createElement('button');
-          
-            greeting.classList.add('greeting');
-            bagSection.classList.add('bag-section');
-            bagImg.classList.add('bag-img');
-            bag.classList.add('bag');
-            booksSection.classList.add('books-section');
+                
             book.classList.add('book');
             bookCapture.classList.add('book-capture');
             author.classList.add('author');
@@ -44,7 +60,6 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             popup.classList.add('popup');
             closeBtn.classList.add('close');
         
-            greeting.textContent = 'Welcome to the book shop!';
             author.textContent = obj.author;
             bookName.textContent = obj.title;
             bookPrice.textContent = 'Price: $' + obj.price;
@@ -53,13 +68,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             bookPic.setAttribute('src', obj.imageLink);
             popupBookInfo.textContent = obj.description;
             closeBtn.textContent = 'Close';
-        
-            let page = document.querySelector('main');
-            let header = document.querySelector('header');
-            
-            header.appendChild(greeting);
-            bagSection.appendChild(bag);
-            bagSection.appendChild(bagImg);
+           
             book.appendChild(bookPic);
             bookCapture.appendChild(author);
             bookCapture.appendChild(bookName);
@@ -70,9 +79,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             popup.appendChild(closeBtn);
             bookCapture.appendChild(popup);
             book.appendChild(bookCapture);
-            booksSection.appendChild(book);
-            page.appendChild(bagSection);
-            page.appendChild(booksSection);
+            document.querySelector('.books-section').appendChild(book);
         }
 
         function showClosePopup() {
