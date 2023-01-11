@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Order book</title>
+        <link rel="stylesheet" href="normalize.css">
+        <link rel="stylesheet" href="form-styles.css">   
+    </head>
+   
+    <body>
+        <header>
+            <div>Welcome to the Book-shop!</div>
+        </header>
+        <main>
+            <form action="" method="post">
+                <ul>
+                    <li>
+                        <label for="name" class="form-field">Name:</label>
+                        <input class="checked" id="name" type="text" minlength="4" required>
+                        <span class="error" id="er1"></span>
+                    </li>
+                    <li>
+                        <label for="surname" class="form-field">Surname:</label>
+                        <input class="checked" id="surname" type="text" minlength="5" required>
+                        <span class="error"></span>                       
+                    </li>
+                    <li>
+                        <label for="d-date" class="form-field">Delivery date:</label>
+                        <input class="checked" id="d-date" type="date" required>
+                        <span class="error"></span>                       
+                    </li>
+                    <li>
+                        <label for="street" class="form-field">Street:</label>
+                        <input class="checked" id="street" type="text" minlength="5" required>
+                        <span class="error"></span>                       
+                    </li>
+                    <li>
+                        <label for="house" class="form-field">House number:</label>
+                        <input class="checked" id="house" type="number" min="1" required>
+                        <span class="error"></span>                        
+                    </li>
+                    <li>
+                        <label for="flat" class="form-field">Flat number:</label>
+                        <input class="checked" id="flat" pattern="\d+(-\d+)?" required> 
+                        <span class="error"></span>                       
+                    </li>
+                    <li>
+                        <fieldset class="payment">
+                            <legend class="form-field">Choose the payment type</legend>
+                            <label for="cash">Cash
+                            <input class="checked" id="cash" type="radio" name="payment" required>
+                        </label>
+                            <label for="card">Card
+                            <input id="card" type="radio" name="payment">
+                            <span class="error"></span>
+                            </label>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <div class="gifts-blocker">
+
+                        </div>   
+                        <div class="gifts-popup">
+                            <p>You can select only 2 gifts.</p>
+                            <button class="gifts-close-btn" type="button">Ok</button>
+                        </div>        
+                        <fieldset class="gift">
+                            <legend class="form-field">Choose two gifts</legend>
+                            <label for="pack">Pack as a gift
+                                <input class="gift-checkbox" id="pack" type="checkbox">
+                             </label>
+                            <label for="postcard">Add a postcard
+                                <input class="gift-checkbox" id="postcard" type="checkbox">
+                            </label>
+                            <label for="discount">Provide 2% discount to the next time
+                                <input class="gift-checkbox" id="discount" type="checkbox">
+                            </label>
+                            <label for="pen">Branded pen or pencil
+                                <input class="gift-checkbox" id="pen" type="checkbox">
+                            </label>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <button type="button" class="order-btn">Order books</button>
+                        <div class="submit-blocker">
+                        </div>   
+                        <div class="submit-popup">
+                            <p class="submit-message"></p>
+                            <button class="submit-close-btn" type="submit">Ok</button>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+
+        </main>
+        <footer>
+
+        </footer>
+        <script src="form-script.js"></script>
+    </body>
+</html>
