@@ -34,10 +34,14 @@ main {
 .bag-img {
     margin: 20px;   
     height: 40px;
+    width: 40px;
     background-image: url('icons/bag-icon.png');
     background-position: right;
     background-repeat: no-repeat;
     background-size: contain;
+    position: fixed;
+    top: 40px;
+    right: 0;
 }
 
 .bag {

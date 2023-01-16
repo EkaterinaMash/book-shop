@@ -1,5 +1,5 @@
 let books = [];
-let bag = {
+let bagObj = {
     total: 0,
     selectedBooks: [],
 }
@@ -15,14 +15,15 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             for (let i=0; i<data.length; i++) {
                 createBookElem(data[i]);
             }
+            
             showClosePopup();
-            AddBookToBag(); // big Add   
+            addBookToBag();  
             dragBookToBag(); 
             openBag();
             orderBook(); 
             
         });
-
+        
         function createPageElem() {
             let header = document.querySelector('header');
             let page = document.querySelector('main');
@@ -141,7 +142,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
         }
 
 
-        function AddBookToBag() {
+        function addBookToBag() {
             let addButtons = document.querySelectorAll('.add-button');
             /*let myBooks = document.querySelectorAll('.book-capture'); */
             for (let i=0; i<addButtons.length; i++) {
@@ -153,8 +154,8 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
 
         function dragBookToBag() {
             let bookPics = document.querySelectorAll('.book-pic');
-            let bag = document.querySelector('.bag-img');
             let currentBookIndex;
+            let bag = document.querySelector('.bag-img');
         
             for (let i=0; i<bookPics.length; i++) {
                 bookPics[i].addEventListener('dragstart', function() {
@@ -199,8 +200,8 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
         }
 
         function addInfoToBag(n) {
-            bag.selectedBooks.push(books[n]);
-            bag.total += books[n].price;
+            bagObj.selectedBooks.push(books[n]);
+            bagObj.total += books[n].price;
             
             let bookInBag = document.createElement('div');
             let bagTitle = document.createElement('div');
@@ -223,24 +224,9 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             bookInBag.appendChild(bagTitle);
             bookInBag.appendChild(bagPrice);
             document.querySelector('.bag').appendChild(bookInBag);
-            document.querySelector('.total').textContent = 'Total: $' + bag.total;   
-        } /* если объявить функцию вне цикла? */
+            document.querySelector('.total').textContent = 'Total: $' + bagObj.total;   
+        } 
         
-
-        /*
-        function dragBookToBag() {
-            let bookPics = document.querySelectorAll('.book-pic');
-            window.addEventListener('DOMContentLoaded', function() {
-                for (let i=0; i<bookPics.length; i++) {
-                    bookPics[i].addEventListener('dragstart', function(event) {
-                        event.dataTransfer.setData('text/plain', event.target.id);
-                        bookPics[i].classList.add('drag');
-                        console.log(5, dataTransfer);
-                    })
-                }
-            })
-        } */
-
         function addBookRemover() {
            let deleteBtns = document.querySelectorAll('.delete-btn');
            let booksInBag = document.querySelectorAll('.book-in-bag');
@@ -248,8 +234,8 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             deleteBtns[i].onclick = deleteBook;
             function deleteBook() {
                 booksInBag[i].remove();
-                bag.total = bag.total - bag.selectedBooks[i].price;
-                document.querySelector('.total').textContent = 'Total: $' + bag.total; 
+                bagObj.total = bagObj.total - bagObj.selectedBooks[i].price;
+                document.querySelector('.total').textContent = 'Total: $' + bagObj.total; 
                }
            }
         }

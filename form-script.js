@@ -1,8 +1,12 @@
 function setMinDeliveryDate() {
     let minDate = new Date();
+    console.log(minDate);
     minDate.setDate(minDate.getDate()+1);
     let minYear = minDate.getFullYear();
-    let minMonth = minDate.getMonth() + 1;
+    let minMonth = minDate.getMonth() + 1; 
+    if (minMonth < 10) {
+        minMonth = '0' + minMonth;
+    }
     let minDay = minDate.getDate();
     let deliveryDate = document.getElementById('d-date');
     deliveryDate.setAttribute('min', `${minYear}-${minMonth}-${minDay}`); 
@@ -112,49 +116,42 @@ blockerGifts.onclick = function() {
     closePopup(popupGifts, blockerGifts);
 }
 
-/*
-let submitBlocker = document.querySelector('.submit-blocker');
-let submitPopup = document.querySelector('.submit-popup');
-let submitMessage = document.querySelector('.submit-message');
-let submitCloseBtn = document.querySelector('.submit-close-btn');
-openPopup(submitPopup, submitBlocker); */
+for (let i=0; i<inputFields.length; i++) {
+    
+    inputFields[i].oninput = function() {
+        inputFields[i].setCustomValidity('');
+        if (!inputFields[i].validity.valid) { 
+            inputFields[i].setCustomValidity('The field is invalid');
+            console.log('invalid');
+        } else {
+    inputFields[i].setCustomValidity('');
+    console.log('valid');}
+    inputFields[i].reportValidity(); 
+    } 
+} 
 
-/*
-formInfo.addEventListener('submit', function(event) {
-    for (let i=0; i<inputFields.length; i++) {
-    if (!inputFields[i].checkValidity()) {
-        event.preventDefault(); 
-        inputFields[i].setCustomValidity('The field is invalid');
-        inputFields[i].reportValidity();  
-    } else {
-        let userName = document.getElementById('name').value + ' ' + document.getElementById('surname').value;
-        let street = document.getElementById('street').value + ' street'; 
-        let house = ' house ' + document.getElementById('house').value;
-        let flat = ' flat ' + document.getElementById('flat').value;
-        let submitBlocker = document.querySelector('.submit-blocker');
-        let submitPopup = document.querySelector('.submit-popup');
-        let submitMessage = document.querySelector('.submit-message');
-        let submitCloseBtn = document.querySelector('.submit-close-btn');
-        submitPopup.classList.add('show');
-        submitBlocker.classList.add('show');
-       submitMessage.textContent = `The order created. The delivery address is ${street} ${house} ${flat}. Customer ${userName}`; 
-        submitCloseBtn.onclick = closePopup(submitPopup, submitBlocker);
+
+for (let i=0; i<inputFields.length; i++) {
+    inputFields[i].onchange = function() {
+        if (formInfo.checkValidity()) {
+            orderBtn.removeAttribute('disabled');
+        }
     }
 }
-}) */
+
 
 orderBtn.onclick = function() {
-    console.log(1);
+    
+    console.log('order');
+    let submitBlocker = document.querySelector('.submit-blocker');
+    let submitPopup = document.querySelector('.submit-popup');
+    let submitMessage = document.querySelector('.submit-message');
+    submitPopup.classList.add('show');
+    submitBlocker.classList.add('show');
     let userName = document.getElementById('name').value + ' ' + document.getElementById('surname').value;
-        let street = document.getElementById('street').value + ' street'; 
-        let house = ' house ' + document.getElementById('house').value;
-        let flat = ' flat ' + document.getElementById('flat').value;
-        let submitBlocker = document.querySelector('.submit-blocker');
-        let submitPopup = document.querySelector('.submit-popup');
-        let submitMessage = document.querySelector('.submit-message');
-        let submitCloseBtn = document.querySelector('.submit-close-btn');
-        submitPopup.classList.add('show');
-        submitBlocker.classList.add('show');
-        submitMessage.textContent = `The order created. The delivery address is ${street} ${house} ${flat}. Customer ${userName}`; 
-        submitCloseBtn.onclick = closePopup(submitPopup, submitBlocker);
+    let street = document.getElementById('street').value + ' street'; 
+    let house = ' house ' + document.getElementById('house').value;
+    let flat = ' flat ' + document.getElementById('flat').value;
+    submitMessage.textContent = `The order created. The delivery address is ${street} ${house} ${flat}. Customer ${userName}`; 
+    console.log(userName, street, house, flat);
 }
