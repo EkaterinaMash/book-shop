@@ -5,7 +5,7 @@ let bagObj = {
 }
 let body = document.querySelector('body');
 
-fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-info.json') 
+fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/pages/book-shop/books-info.json') 
         .then(response => {
             return response.json();
         })
