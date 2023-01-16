@@ -1,0 +1,110 @@
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+}
+
+main {
+    margin-top: 30px;
+}
+
+.bag-section {
+    position: relative;
+    padding-top: 10px;
+    height: 60px;    
+}
+
+.bag-img {
+    margin: 20px;   
+    height: 40px;
+    width: 40px;
+    background-image: url('../../icons/bag-icon.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: fixed;
+    top: 40px;
+    right: 0;
+}
+
+.bag {
+    display: none;
+}
+
+.bag.show {
+    display: flex;
+    position: fixed;
+    overflow: scroll;
+    top: 50px;
+    bottom: 0;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 20px;
+    background-color:burlywood;
+    z-index: 1;
+    opacity: 1;
+    border-radius: 5px;
+}
+
+.bag-name {
+    font-size: 24px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.book-in-bag {
+    margin: 10px;
+    padding: 10px;
+    width: 80%;
+    font-size: 20px;
+    border-style: groove;
+    border-radius: 5px;
+    border-color: bisque;
+}
+
+.bag-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.total {
+    order: 2;
+    margin: 10px;
+    color: crimson;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.book {    
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 20px 30px;
+    background-color: antiquewhite;
+}
+
+.book img {
+    width: 30vw;
+    height: 40vw;
+}
+
+.book-capture {
+    flex: 1;
+    margin: 10px 10px;
+    font: Helvetica, sans-serif;
+    font-size: 16px;
+    position: relative;
+    
+}
+
+.book-name {
+    font-weight: 600;
+    font-size: 150%;
+    margin: 20px 0 20px;
+}
+
+
+
+

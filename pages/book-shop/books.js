@@ -3,6 +3,7 @@ let bagObj = {
     total: 0,
     selectedBooks: [],
 }
+let body = document.querySelector('body');
 
 fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-info.json') 
         .then(response => {
@@ -15,19 +16,16 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             for (let i=0; i<data.length; i++) {
                 createBookElem(data[i]);
             }
-            
             showClosePopup();
             addBookToBag();  
             dragBookToBag(); 
             openBag();
-            orderBook(); 
-            
+            orderBook();  
         });
         
         function createPageElem() {
             let header = document.querySelector('header');
             let page = document.querySelector('main');
-
             let greeting = document.createElement('div');
             let bagSection = document.createElement('section');
             let bagCloseBtn = document.createElement('div');
@@ -38,7 +36,6 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             let orderBtn = document.createElement('button');
             let booksSection = document.createElement('section');
 
-            greeting.classList.add('greeting');
             bagSection.classList.add('bag-section');
             bagCloseBtn.classList.add('bag-close-btn');
             bagTitle.classList.add('bag-name');
@@ -46,6 +43,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             bag.classList.add('bag');
             total.classList.add('total');
             orderBtn.classList.add('order-btn');
+            orderBtn.classList.add('button');
             booksSection.classList.add('books-section');
 
             greeting.textContent = 'Welcome to the book shop!';
@@ -86,11 +84,14 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             bookName.classList.add('book-name');
             bookPrice.classList.add('book-price');
             bookDescription.classList.add('book-info-button');
+            bookDescription.classList.add('button');
             addToBagButton.classList.add('add-button');
+            addToBagButton.classList.add('button');
             popupContainer.classList.add('popup-container');
             popup.classList.add('popup');
-            popupBlocker.classList.add('popup-blocker');
-            closeBtn.classList.add('close');
+            popupBlocker.classList.add('blocker');
+            closeBtn.classList.add('close-btn');
+            closeBtn.classList.add('button');
         
             author.textContent = obj.author;
             bookName.textContent = obj.title;
@@ -119,32 +120,60 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
 
         function showClosePopup() {
             let infoButtons = document.querySelectorAll('.book-info-button');
-            let closeButtons = document.querySelectorAll('.close');
+            let closeButtons = document.querySelectorAll('.close-btn');
             let popups = document.querySelectorAll('.popup');
-            let blockers = document.querySelectorAll('.popup-blocker');
-            for (let i=0; i<infoButtons.length; i++) {
-                infoButtons[i].onclick = openPopup;
-                closeButtons[i].onclick = closePopup;
-                blockers[i].onclick = closePopup;
+            let blockers = document.querySelectorAll('.blocker');
 
-                function openPopup() {
-                    popups[i].classList.add('show');
-                    blockers[i].classList.add('show');
-                    document.querySelector('body').classList.add('no-scroll');
-                }
-        
-                function closePopup() {
-                    popups[i].classList.remove('show');
-                    blockers[i].classList.remove('show');
-                    document.querySelector('body').classList.remove('no-scroll');
-                }
+            for (let i=0; i<infoButtons.length; i++) {
+                infoButtons[i].onclick = function() {
+                    togglePopup(i);
+                };
+                closeButtons[i].onclick = function() {
+                    togglePopup(i);
+                };
+                blockers[i].onclick = function()
+                {
+                    togglePopup(i);
+                };  
+            }
+
+            function togglePopup(n) {
+                popups[n].classList.toggle('show');
+                blockers[n].classList.toggle('show');
+                body.classList.toggle('no-scroll');
             }
         }
 
+        function addInfoToBag(n) {
+            bagObj.selectedBooks.push(books[n]);
+            bagObj.total += books[n].price;
+            
+            let bookInBag = document.createElement('div');
+            let bagTitle = document.createElement('div');
+            let bagAuthor = document.createElement('div');
+            let bagPrice = document.createElement('div');
+            let deleteBtn = document.createElement('div');
+            
+            bookInBag.classList.add('book-in-bag');
+            bagTitle.classList.add('bag-title');
+            bagAuthor.classList.add('bag-author');
+            bagPrice.classList.add('bag-price');
+            deleteBtn.classList.add('delete-btn');
+
+            bagTitle.textContent = books[n].title;
+            bagAuthor.textContent = books[n].author;
+            bagPrice.textContent = 'Price: $' + books[n].price;
+            
+            bookInBag.appendChild(deleteBtn);
+            bookInBag.appendChild(bagAuthor);
+            bookInBag.appendChild(bagTitle);
+            bookInBag.appendChild(bagPrice);
+            document.querySelector('.bag').appendChild(bookInBag);
+            document.querySelector('.total').textContent = 'Total: $' + bagObj.total;   
+        }
 
         function addBookToBag() {
             let addButtons = document.querySelectorAll('.add-button');
-            /*let myBooks = document.querySelectorAll('.book-capture'); */
             for (let i=0; i<addButtons.length; i++) {
                 addButtons[i].onclick = function() {
                    addInfoToBag(i);
@@ -175,58 +204,6 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             bag.addEventListener('drop', dropBook);      
         }
 
-        function addToBag() {
-            let currentBook = document.querySelector('.book-capture.selected');
-            let currentBookElements = currentBook.childNodes;
-            for (let i=0; i<currentBookElements.length; i++) {
-                currentBookElements[i].classList.add('in-bag');
-            }
-            let addedAuthor = document.querySelector('.author.in-bag').cloneNode(true);
-            let addedBook = document.querySelector('.book-name.in-bag').cloneNode(true);
-            let addedPrice = document.querySelector('.book-price.in-bag').cloneNode(true);
-            let bookInBag = document.createElement('div');
-            let deleteBtn = document.createElement('div');
-
-            bookInBag.classList.add('book-in-bag');
-            deleteBtn.classList.add('delete-btn');
-
-            bookInBag.appendChild(deleteBtn);
-            bookInBag.appendChild(addedAuthor);
-            bookInBag.appendChild(addedBook);
-            bookInBag.appendChild(addedPrice);
-
-            document.querySelector('.bag').appendChild(bookInBag);
-            document.querySelector('.total').textContent = 'Total: $' + addedPrice.nodeValue;
-        }
-
-        function addInfoToBag(n) {
-            bagObj.selectedBooks.push(books[n]);
-            bagObj.total += books[n].price;
-            
-            let bookInBag = document.createElement('div');
-            let bagTitle = document.createElement('div');
-            let bagAuthor = document.createElement('div');
-            let bagPrice = document.createElement('div');
-            let deleteBtn = document.createElement('div');
-            
-            bookInBag.classList.add('book-in-bag');
-            bagTitle.classList.add('bag-title');
-            bagAuthor.classList.add('bag-author');
-            bagPrice.classList.add('bag-price');
-            deleteBtn.classList.add('delete-btn');
-
-            bagTitle.textContent = books[n].title;
-            bagAuthor.textContent = books[n].author;
-            bagPrice.textContent = 'Price: $' + books[n].price;
-            
-            bookInBag.appendChild(deleteBtn);
-            bookInBag.appendChild(bagAuthor);
-            bookInBag.appendChild(bagTitle);
-            bookInBag.appendChild(bagPrice);
-            document.querySelector('.bag').appendChild(bookInBag);
-            document.querySelector('.total').textContent = 'Total: $' + bagObj.total;   
-        } 
-        
         function addBookRemover() {
            let deleteBtns = document.querySelectorAll('.delete-btn');
            let booksInBag = document.querySelectorAll('.book-in-bag');
@@ -242,7 +219,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
 
         function orderBook() {
             document.querySelector('.order-btn').onclick = function() {
-                window.open('form.html');
+                window.open('../form/form.html');
             }
         }
 
@@ -254,7 +231,6 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/books-
             }  
         }
 
-        
         function closeBag() {
             document.querySelector('.bag-close-btn').onclick = function() {
                 document.querySelector('.bag').classList.remove('show'); 

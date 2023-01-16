@@ -1,0 +1,18 @@
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    opacity: 1;
+    z-index: 1;
+}
+
+header div {
+    height: 30px;
+    font: Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px;
+    background-color: brown;
+    color: aliceblue;
+}
