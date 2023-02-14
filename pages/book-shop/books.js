@@ -1,7 +1,7 @@
 let books = [];
 let bagObj = {
     total: 0,
-    selectedBooks: [],
+    selectedBooks: []
 }
 let body = document.querySelector('body');
 
@@ -144,9 +144,13 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/pages/
             }
         }
 
+        
+
         function addInfoToBag(n) {
+
             bagObj.selectedBooks.push(books[n]);
             bagObj.total += books[n].price;
+            console.log('addInfoToBag', bagObj.selectedBooks);
             
             let bookInBag = document.createElement('div');
             let bagTitle = document.createElement('div');
@@ -159,6 +163,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/pages/
             bagAuthor.classList.add('bag-author');
             bagPrice.classList.add('bag-price');
             deleteBtn.classList.add('delete-btn');
+            addBookRemover(bookInBag, bagObj.selectedBooks, books[n], deleteBtn);
 
             bagTitle.textContent = books[n].title;
             bagAuthor.textContent = books[n].author;
@@ -204,15 +209,20 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/pages/
             bag.addEventListener('drop', dropBook);      
         }
 
-        function addBookRemover() {
+        function addBookRemovers() {
            let deleteBtns = document.querySelectorAll('.delete-btn');
            let booksInBag = document.querySelectorAll('.book-in-bag');
-           for (let i=0; i<deleteBtns.length; i++) {
+
+           for (let i = 0; i < bagObj.selectedBooks.length; i++) {
             deleteBtns[i].onclick = deleteBook;
-            function deleteBook() {
+
+            function deleteBook(event) {
+                console.log(2, i, event);
                 booksInBag[i].remove();
                 bagObj.total = bagObj.total - bagObj.selectedBooks[i].price;
                 document.querySelector('.total').textContent = 'Total: $' + bagObj.total; 
+                bagObj.selectedBooks.splice(i, 1);
+                console.log(3, bagObj);
                }
            }
         }
@@ -226,7 +236,7 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/pages/
         function openBag() {
             document.querySelector('.bag-img').onclick = function() {
                 document.querySelector('.bag').classList.add('show');
-                addBookRemover();   
+                addBookRemovers();   
                 closeBag();
             }  
         }

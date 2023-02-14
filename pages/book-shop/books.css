@@ -27,6 +27,10 @@ main {
     right: 0;
 }
 
+.bag-img:hover {
+    cursor: pointer;
+}
+
 .bag {
     display: none;
 }

@@ -12,7 +12,6 @@ let submitMessage = document.querySelector('.submit-message');
 
 function setMinDeliveryDate() {
     let minDate = new Date();
-    console.log(minDate);
     minDate.setDate(minDate.getDate()+1);
     let minYear = minDate.getFullYear();
     let minMonth = minDate.getMonth() + 1; 
@@ -28,7 +27,7 @@ setMinDeliveryDate();
 
 function setFlatNumberPattern() {
     let flatNumber = document.getElementById('flat');
-    
+
     flatNumber.addEventListener('input', function() {
         if (flatNumber.value[0] === '-') {
             flatNumber.validity.valid = false;

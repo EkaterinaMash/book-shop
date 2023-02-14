@@ -9,6 +9,11 @@
     font-size: 16px;
 }
 
+.button:hover {
+    cursor: pointer;
+    background-color: burlywood;
+}
+
 .button:disabled {
     background-color: gray;
     border-color: gray;
@@ -40,6 +45,10 @@
     background-size: contain;
 }
 
+.bag-close-btn:hover {
+    cursor: pointer;
+}
+
 .delete-btn {
     width: 15px;
     height: 15px;
@@ -48,6 +57,10 @@
     background-image: url('icons/cross-icon.png');
     background-repeat: no-repeat;
     background-size: contain;
+}
+
+.delete-btn:hover {
+    cursor: pointer;
 }
 
 .order-btn {
