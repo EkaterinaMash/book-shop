@@ -23,23 +23,12 @@ function setMinDeliveryDate() {
     }
 
     let minDay = minDate.getDate();
-    let deliveryDate = document.getElementById('d-date'); // ?
+    let deliveryDate = document.getElementById('delivery-date'); 
 
     deliveryDate.setAttribute('min', `${minYear}-${minMonth}-${minDay}`);
 }
 
 setMinDeliveryDate();
-
-function setFlatNumberPattern() { // ?
-    let flatNumber = document.getElementById('flat');
-
-    flatNumber.addEventListener('input', function () {
-        if (flatNumber.value[0] === '-') {
-            flatNumber.validity.valid = false;
-        }
-        ;
-    });
-}
 
 function togglePopup(popup, blocker) {
     popup.classList.toggle('show');

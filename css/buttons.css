@@ -41,7 +41,7 @@
     right: 20px;
     width: 30px;
     height: 30px;
-    background-image: url(icons/cross.png);
+    background-image: url(../icons/cross.png);
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -55,7 +55,7 @@
     height: 15px;
     margin-left: auto;
     margin-right: 20px;
-    background-image: url('icons/cross-icon.png');
+    background-image: url('../icons/cross-icon.png');
     background-repeat: no-repeat;
     background-size: contain;
 }

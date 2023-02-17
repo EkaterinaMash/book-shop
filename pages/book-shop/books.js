@@ -18,8 +18,8 @@ fetch('https://raw.githubusercontent.com/EkaterinaMash/book-shop/gh-pages/pages/
             createBookElement(books[i]);
         }
 
-        openBag();
-        orderBook();
+        addBagClickListener();
+        addOrderClickListener();
     });
 
 function createPageElements() {
@@ -124,10 +124,10 @@ function createBookElement(bookObj) {
     document.querySelector('.books-list').appendChild(book);
 
     addToBagButton.onclick = function () {
-        addInfoToBag(bookObj)
+        addBookElementToBag(bookObj)
     }
 
-    dragToBag(bookPic, bookObj);
+    addBookDragAndDrop(bookPic, bookObj);
 
     bookDescription.onclick = function () {
         togglePopup(popup, popupBlocker);
@@ -142,7 +142,7 @@ function createBookElement(bookObj) {
     }
 }
 
-function addInfoToBag(bookObj) {
+function addBookElementToBag(bookObj) {
     bagObj.selectedBooks.push(bookObj);
     bagObj.total += bookObj.price;
 
@@ -175,7 +175,7 @@ function addInfoToBag(bookObj) {
     }
 }
 
-function dragToBag(bookPic, bookObj) {
+function addBookDragAndDrop(bookPic, bookObj) {
     let bag = document.querySelector('.bag-img');
 
     function startDrag(ev) {
@@ -191,7 +191,7 @@ function dragToBag(bookPic, bookObj) {
         const data = ev.dataTransfer.getData('bookInfo');
 
         if (data == bookObj.id) {
-            addInfoToBag(bookObj);
+            addBookElementToBag(bookObj);
         }
     }
 
@@ -219,25 +219,23 @@ function togglePopup(popup, popupBlocker) {
     body.classList.toggle('no-scroll');
 }
 
-function orderBook() {
+function addOrderClickListener() {
     document.querySelector('.order-btn').onclick = function () {
         window.open('../form/form.html');
     }
 }
 
-function openBag() {
+function addBagClickListener() {
     document.querySelector('.bag-img').onclick = function () {
         document.querySelector('.bag').classList.add('show');
-
-        closeBag();
+        document.querySelector('.bag-close-btn').onclick = closeBag;
     }
 }
 
 function closeBag() {
-    document.querySelector('.bag-close-btn').onclick = function () {
         document.querySelector('.bag').classList.remove('show');
-    }
 }
+
 
 
 
