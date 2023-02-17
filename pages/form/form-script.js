@@ -12,27 +12,33 @@ let submitMessage = document.querySelector('.submit-message');
 
 function setMinDeliveryDate() {
     let minDate = new Date();
-    minDate.setDate(minDate.getDate()+1);
+
+    minDate.setDate(minDate.getDate() + 1);
+
     let minYear = minDate.getFullYear();
-    let minMonth = minDate.getMonth() + 1; 
+    let minMonth = minDate.getMonth() + 1;
+
     if (minMonth < 10) {
         minMonth = '0' + minMonth;
     }
+
     let minDay = minDate.getDate();
-    let deliveryDate = document.getElementById('d-date');
-    deliveryDate.setAttribute('min', `${minYear}-${minMonth}-${minDay}`); 
+    let deliveryDate = document.getElementById('d-date'); // ?
+
+    deliveryDate.setAttribute('min', `${minYear}-${minMonth}-${minDay}`);
 }
 
 setMinDeliveryDate();
 
-function setFlatNumberPattern() {
+function setFlatNumberPattern() { // ?
     let flatNumber = document.getElementById('flat');
 
-    flatNumber.addEventListener('input', function() {
+    flatNumber.addEventListener('input', function () {
         if (flatNumber.value[0] === '-') {
             flatNumber.validity.valid = false;
-        };
-    });   
+        }
+        ;
+    });
 }
 
 function togglePopup(popup, blocker) {
@@ -41,17 +47,19 @@ function togglePopup(popup, blocker) {
     body.classList.toggle('no-scroll');
 }
 
-function limitCheckedGifts() {    
+function limitCheckedGifts() {
     let maxChecked = 2;
 
-    for (let i=0; i<giftCheckboxes.length; i++) {
-        giftCheckboxes[i].onclick = function() {
+    for (let i = 0; i < giftCheckboxes.length; i++) {
+        giftCheckboxes[i].onclick = function () {
             let count = 0;
-            for (let i=0; i<giftCheckboxes.length; i++) {
+
+            for (let i = 0; i < giftCheckboxes.length; i++) {
                 if (giftCheckboxes[i].checked) {
                     count += 1;
-                } 
+                }
             }
+
             if (count > maxChecked) {
                 togglePopup(popupGifts, blockerGifts);
                 this.checked = false;
@@ -62,40 +70,45 @@ function limitCheckedGifts() {
 
 limitCheckedGifts();
 
-giftsCloseBtn.onclick = function() {
+giftsCloseBtn.onclick = function () {
     togglePopup(popupGifts, blockerGifts);
 }
 
-blockerGifts.onclick = function() {
+blockerGifts.onclick = function () {
     togglePopup(popupGifts, blockerGifts);
 }
 
-for (let i=0; i<inputFields.length; i++) {
-    inputFields[i].oninput = function() {
+for (let i = 0; i < inputFields.length; i++) {
+    inputFields[i].oninput = function () {
+
         inputFields[i].setCustomValidity('');
-        if (!inputFields[i].validity.valid) { 
-            inputFields[i].setCustomValidity('The field is invalid'); 
+
+        if (!inputFields[i].validity.valid) {
+            inputFields[i].setCustomValidity('The field is invalid');
         } else {
             inputFields[i].setCustomValidity('');
         }
-    inputFields[i].reportValidity();
-    } 
-} 
 
-for (let i=0; i<inputFields.length; i++) {
-    inputFields[i].onchange = function() {
+        inputFields[i].reportValidity();
+    }
+}
+
+for (let i = 0; i < inputFields.length; i++) {
+    inputFields[i].onchange = function () {
         if (formInfo.checkValidity()) {
             orderBtn.removeAttribute('disabled');
         }
     }
 }
 
-orderBtn.onclick = function() {
+orderBtn.onclick = function () {
     submitPopup.classList.add('show');
     submitBlocker.classList.add('show');
+
     let userName = document.getElementById('name').value + ' ' + document.getElementById('surname').value;
-    let street = document.getElementById('street').value + ' street'; 
+    let street = document.getElementById('street').value + ' street';
     let house = ' house ' + document.getElementById('house').value;
     let flat = ' flat ' + document.getElementById('flat').value;
-    submitMessage.textContent = `The order created. The delivery address is ${street} ${house} ${flat}. Customer ${userName}.`; 
+
+    submitMessage.textContent = `The order created. The delivery address is ${street} ${house} ${flat}. Customer ${userName}.`;
 }

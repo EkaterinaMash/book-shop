@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../../header.css">
         <link rel="stylesheet" href="../../buttons.css">
         <link rel="stylesheet" href="../../popups.css">
-        <link rel="stylesheet" href="form-styles.css">   
+        <link rel="stylesheet" href="form-styles.css">
     </head>
     <body>
         <header>
@@ -23,47 +23,47 @@
                     </li>
                     <li>
                         <label for="surname" class="form-field">Surname:</label>
-                        <input class="checked" id="surname" type="text" minlength="5" required>                      
+                        <input class="checked" id="surname" type="text" minlength="5" required>
                     </li>
                     <li>
                         <label for="d-date" class="form-field">Delivery date:</label>
-                        <input class="checked" id="d-date" type="date" required>                     
+                        <input class="checked" id="d-date" type="date" required>
                     </li>
                     <li>
                         <label for="street" class="form-field">Street:</label>
-                        <input class="checked" id="street" type="text" minlength="5" required>                      
+                        <input class="checked" id="street" type="text" minlength="5" required>
                     </li>
                     <li>
                         <label for="house" class="form-field">House number:</label>
-                        <input class="checked" id="house" type="number" min="1" required>                      
+                        <input class="checked" id="house" type="number" min="1" required>
                     </li>
                     <li>
                         <label for="flat" class="form-field">Flat number:</label>
-                        <input class="checked" id="flat" pattern="\d+(-\d+)?" required>                       
+                        <input class="checked" id="flat" pattern="\d+(-\d+)?" required>
                     </li>
                     <li>
                         <fieldset class="payment">
                             <legend class="form-field">Choose the payment type</legend>
                             <label for="cash">Cash
-                            <input class="checked" id="cash" type="radio" name="payment" required>
-                        </label>
+                                <input class="checked" id="cash" type="radio" name="payment" required>
+                            </label>
                             <label for="card">Card
-                            <input id="card" type="radio" name="payment">
+                                <input id="card" type="radio" name="payment">
                             </label>
                         </fieldset>
                     </li>
                     <li>
                         <div class="gifts-blocker blocker">
-                        </div>   
+                        </div>
                         <div class="gifts-popup popup">
                             <p>You can select only 2 gifts.</p>
                             <button class="gifts-close-btn button" type="button">Ok</button>
-                        </div>        
+                        </div>
                         <fieldset class="gift">
                             <legend class="form-field">Choose two gifts</legend>
                             <label for="pack">Pack as a gift
                                 <input class="gift-checkbox" id="pack" type="checkbox">
-                             </label>
+                            </label>
                             <label for="postcard">Add a postcard
                                 <input class="gift-checkbox" id="postcard" type="checkbox">
                             </label>
@@ -78,7 +78,7 @@
                     <li>
                         <button type="button" class="order-btn button" disabled>Order books</button>
                         <div class="submit-blocker blocker">
-                        </div>   
+                        </div>
                         <div class="submit-popup popup">
                             <p class="submit-message"></p>
                             <button class="submit-close-btn button" type="submit">Ok</button>
@@ -89,7 +89,6 @@
 
         </main>
         <footer>
-
         </footer>
         <script src="form-script.js"></script>
     </body>
