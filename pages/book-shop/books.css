@@ -107,7 +107,7 @@ main {
     align-content: stretch;
     flex: 1;
     margin: 10px 10px;
-    font: Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
     font-size: 16px;
     position: relative;
 }
