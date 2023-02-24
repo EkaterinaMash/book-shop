@@ -1,6 +1,6 @@
 let body = document.querySelector('body');
 let inputFields = document.querySelectorAll('.checked');
-let orderBtn = document.querySelector('.order-btn');
+let orderBtn = document.querySelector('.order-button');
 let formInfo = document.querySelector('form');
 let giftCheckboxes = document.querySelectorAll('.gift-checkbox');
 let popupGifts = document.querySelector('.gifts-popup');

@@ -66,6 +66,8 @@ main {
     border-style: groove;
     border-radius: 5px;
     border-color: bisque;
+    display: grid;
+    justify-items: start;
 }
 
 .bag-title {
@@ -101,6 +103,8 @@ main {
 }
 
 .book-capture {
+    display: grid;
+    align-content: stretch;
     flex: 1;
     margin: 10px 10px;
     font: Helvetica, sans-serif;

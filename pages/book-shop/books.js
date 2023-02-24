@@ -27,7 +27,7 @@ function createPageElements() {
     let page = document.querySelector('main');
     let greeting = document.createElement('div');
     let bagSection = document.createElement('section');
-    let bagCloseBtn = document.createElement('div');
+    let bagCloseBtn = document.createElement('button');
     let bagTitle = document.createElement('div');
     let bagImg = document.createElement('div');
     let bag = document.createElement('div');
@@ -39,11 +39,13 @@ function createPageElements() {
 
     bagSection.classList.add('bag-section');
     bagCloseBtn.classList.add('bag-close-btn');
+    bagCloseBtn.classList.add('button');
     bagTitle.classList.add('bag-name');
     bagImg.classList.add('bag-img');
     bag.classList.add('bag');
     total.classList.add('total');
-    orderBtn.classList.add('order-btn');
+    orderBtn.classList.add('dark-button');
+    orderBtn.classList.add('order-button');
     orderBtn.classList.add('button');
     booksSection.classList.add('books-section');
     booksList.classList.add('books-list');
@@ -74,6 +76,7 @@ function createBookElement(bookObj) {
     let author = document.createElement('div');
     let bookName = document.createElement('div');
     let bookPrice = document.createElement('div');
+    let bookButtons = document.createElement('div');
     let bookDescription = document.createElement('button');
     let addToBagButton = document.createElement('button');
     let popupContainer = document.createElement('div');
@@ -88,14 +91,15 @@ function createBookElement(bookObj) {
     author.classList.add('author');
     bookName.classList.add('book-name');
     bookPrice.classList.add('book-price');
-    bookDescription.classList.add('book-info-button');
+    bookButtons.classList.add('book-buttons');
+    bookDescription.classList.add('light-button');
     bookDescription.classList.add('button');
-    addToBagButton.classList.add('add-button');
+    addToBagButton.classList.add('dark-button');
     addToBagButton.classList.add('button');
     popupContainer.classList.add('popup-container');
     popup.classList.add('popup');
     popupBlocker.classList.add('blocker');
-    closeBtn.classList.add('close-btn');
+    closeBtn.classList.add('dark-button');
     closeBtn.classList.add('button');
 
     author.textContent = bookObj.author;
@@ -113,8 +117,9 @@ function createBookElement(bookObj) {
     bookCapture.appendChild(author);
     bookCapture.appendChild(bookName);
     bookCapture.appendChild(bookPrice);
-    bookCapture.appendChild(bookDescription);
-    bookCapture.appendChild(addToBagButton);
+    bookButtons.appendChild(bookDescription);
+    bookButtons.appendChild(addToBagButton);
+    bookCapture.appendChild(bookButtons);
     popup.appendChild(popupBookInfo);
     popup.appendChild(closeBtn);
     popupContainer.appendChild(popupBlocker);
@@ -150,7 +155,7 @@ function addBookElementToBag(bookObj) {
     let bagTitle = document.createElement('div');
     let bagAuthor = document.createElement('div');
     let bagPrice = document.createElement('div');
-    let deleteBtn = document.createElement('div');
+    let deleteBtn = document.createElement('button');
     let totalPrice = document.querySelector('.total');
 
     bookInBag.classList.add('book-in-bag');
@@ -158,6 +163,7 @@ function addBookElementToBag(bookObj) {
     bagAuthor.classList.add('bag-author');
     bagPrice.classList.add('bag-price');
     deleteBtn.classList.add('delete-btn');
+    deleteBtn.classList.add('button');
 
     bagTitle.textContent = bookObj.title;
     bagAuthor.textContent = bookObj.author;
@@ -190,7 +196,7 @@ function addBookDragAndDrop(bookPic, bookObj) {
         ev.preventDefault();
         const data = ev.dataTransfer.getData('bookInfo');
 
-        if (data == bookObj.id) {
+        if (data === bookObj.id) {
             addBookElementToBag(bookObj);
         }
     }
@@ -220,7 +226,7 @@ function togglePopup(popup, popupBlocker) {
 }
 
 function addOrderClickListener() {
-    document.querySelector('.order-btn').onclick = function () {
+    document.querySelector('.order-button').onclick = function () {
         window.open('../form/form.html');
     }
 }
@@ -233,7 +239,7 @@ function addBagClickListener() {
 }
 
 function closeBag() {
-        document.querySelector('.bag').classList.remove('show');
+    document.querySelector('.bag').classList.remove('show');
 }
 
 

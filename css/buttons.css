@@ -1,13 +1,27 @@
+.book-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
 .button {
-    background-color: brown;
-    color: aliceblue;
     border-radius: 5px;
-    border-color: brown;
-    width: 100px;
+    width: 120px;
     height: 30px;
     box-sizing: border-box;
     font-size: 16px;
     transition: background-color .2s;
+}
+
+.dark-button {
+    background-color: brown;
+    color: aliceblue;
+    border-color: brown;
+}
+
+.light-button {
+    background-color: beige;
+    border-color: beige;
+    color: brown;
 }
 
 .button:hover {
@@ -21,19 +35,11 @@
     color: black;
 }
 
-.book-info-button, .add-button {
-    position: absolute;
-    bottom: 20px;
-}
-
-.book-info-button {
-    background-color: beige;
-    border-color: brown;
-    color: brown;
-}
-
-.add-button {
-    right: 50px;
+.bag-close-btn, .delete-btn {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgba(0, 0, 0, 0);
+    border-color: rgba(0, 0, 0, 0);
 }
 
 .bag-close-btn {
@@ -42,12 +48,6 @@
     width: 30px;
     height: 30px;
     background-image: url(../icons/cross.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.bag-close-btn:hover {
-    cursor: pointer;
 }
 
 .delete-btn {
@@ -56,12 +56,7 @@
     margin-left: auto;
     margin-right: 20px;
     background-image: url('../icons/cross-icon.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.delete-btn:hover {
-    cursor: pointer;
+    justify-self: end;
 }
 
 .order-btn {
@@ -69,7 +64,7 @@
     align-self: flex-end;
 }
 
-.gifts-close-btn, .submit-close-btn {
+.gifts-close-btn, .submit-button {
     display: block;
     margin-left: auto;
     margin-right: auto;
